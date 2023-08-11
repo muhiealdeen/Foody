@@ -14,7 +14,7 @@ export function RecipeProvider({ children }) {
   });
 
   useEffect(() => {
-    // Fetch recipes and update state here
+    //  I am here fetching recipes and updating state
     const fetchRecipes = async () => {
       const mealTypes = ['Breakfast', 'Lunch', 'Dinner'];
 

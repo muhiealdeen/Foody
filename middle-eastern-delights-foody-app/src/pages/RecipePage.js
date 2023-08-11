@@ -3,6 +3,7 @@ import NavBar from '../components/NavBar';
 import RecipeCard from '../components/RecipeCard';
 import { useRecipeContext } from '../contexts/RecipeContext';
 import { Link } from 'react-router-dom';
+import '../App.css';
 
 const RecipePage = () => {
   const { recipes } = useRecipeContext();

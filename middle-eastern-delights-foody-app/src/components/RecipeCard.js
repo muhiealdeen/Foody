@@ -1,5 +1,5 @@
-// Components/RecipeCard.js
 import React from 'react';
+import '../App.css';
 
 const RecipeCard = ({ recipe }) => {
   return (
