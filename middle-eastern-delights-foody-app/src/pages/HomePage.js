@@ -1,24 +1,36 @@
 import React from 'react';
 import NavBar from '../components/NavBar';
 import { Link } from 'react-router-dom';
+import '../App.css';
 
 const HomePage = () => {
   return (
     <div>
       <NavBar />
+      <Link to="/meal/breakfast" className="meal-link">
+        <section>
+          <h2>Breakfast</h2>
+        </section>
+        View Breakfast Recipes
+      </Link>
+      <Link to="/meal/lunch" className="meal-link">
+        <section>
+          <h2>Lunch</h2>
+        </section>
+        View Lunch Recipes
+      </Link>
+      <Link to="/meal/dinner" className="meal-link">
+        <section>
+          <h2>Dinner</h2>
+        </section>
+        View Dinner Recipes
+      </Link>
+
       <section>
-        <h2>Breakfast</h2>
-        <Link to="/meal/breakfast">View Breakfast Recipes</Link>
+        <Link to="/recipes" className="button-link">
+          <button>View All Recipes</button>
+        </Link>
       </section>
-      <section>
-        <h2>Lunch</h2>
-        <Link to="/meal/lunch">View Lunch Recipes</Link>
-      </section>
-      <section>
-        <h2>Dinner</h2>
-        <Link to="/meal/dinner">View Dinner Recipes</Link>
-      </section>
-      <Link to="/recipes">View All Recipes</Link>
     </div>
   );
 };

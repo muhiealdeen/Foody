@@ -1,12 +1,17 @@
 import React from 'react';
+import '../App.css';
 
 const NavBar = () => {
   return (
-    <nav>
-      <div>Logo</div>
-      <input type="text" placeholder="Search recipes..." />
-      <ul>
-        <li>About the app </li>
+    <nav className="navbar">
+      <div className="logo">Logo</div>
+      <input
+        type="text"
+        className="search-bar"
+        placeholder="Search recipes..."
+      />
+      <ul className="nav-links">
+        <li>About the app</li>
         <li>Contact us</li>
       </ul>
     </nav>
