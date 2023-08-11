@@ -1,6 +1,5 @@
 # FOODY_App
 
-app
 This project aims to create a user-friendly app that provides a comprehensive collection of Middle Eastern recipes, including images, ingredient lists, total calorie counts, and more.
 
 ## Must Have Feature
@@ -10,8 +9,8 @@ This project aims to create a user-friendly app that provides a comprehensive co
 
 - In the landing page (Home Page):
 
-  - It will has 3 main rows ( Breakfast, Lunch, Dinner) each row will contains an img of the most famous recipes and information about the tradition of each daily meal.
-  - if the user click on one of the daily meals he will get many recipes cards.
+  - It will has 3 main sections ( Breakfast, Lunch, Dinner) each section will contains an img of the most famous recipes and information about the tradition of each daily meal.
+  - If the user click on one of the daily meals section, he will get many recipes cards.
 
   - Users will have the ability to search for recipes using a search bar.
 
@@ -21,7 +20,7 @@ This project aims to create a user-friendly app that provides a comprehensive co
 
 ## Nice to Have Feature
 
-mentioed- About the app and contact buttons in the nav bar gose to mentioned pages.
+- About the app and contact buttons in the nav bar gose to mentioned pages.
 
 - There will be a button in the in the Recipe Details page to show the nutritional information and Total calories of the chosen recipe and a link for a page contains additional details about discription and cooking.
 
