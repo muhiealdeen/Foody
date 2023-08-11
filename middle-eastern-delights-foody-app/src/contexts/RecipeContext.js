@@ -1,9 +1,12 @@
-// Components/HomePage.js
-import React, { useState, useEffect } from 'react';
-import NavBar from './NavBar';
-import RecipeCard from './RecipeCard';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
-const HomePage = () => {
+const RecipeContext = createContext();
+
+export function useRecipeContext() {
+  return useContext(RecipeContext);
+}
+
+export function RecipeProvider({ children }) {
   const [recipes, setRecipes] = useState({
     breakfast: [],
     lunch: [],
@@ -11,7 +14,7 @@ const HomePage = () => {
   });
 
   useEffect(() => {
-    // Fetch data from API for each meal type
+    // Fetch recipes and update state here
     const fetchRecipes = async () => {
       const mealTypes = ['Breakfast', 'Lunch', 'Dinner'];
 
@@ -45,35 +48,13 @@ const HomePage = () => {
     fetchRecipes();
   }, []);
 
-  return (
-    <div>
-      <NavBar />
-      <section>
-        <h2>Breakfast</h2>
-        <div className="recipe-cards">
-          {recipes.breakfast.map((recipe, index) => (
-            <RecipeCard key={index} recipe={recipe} />
-          ))}
-        </div>
-      </section>
-      <section>
-        <h2>Lunch</h2>
-        <div className="recipe-cards">
-          {recipes.lunch.map((recipe, index) => (
-            <RecipeCard key={index} recipe={recipe} />
-          ))}
-        </div>
-      </section>
-      <section>
-        <h2>Dinner</h2>
-        <div className="recipe-cards">
-          {recipes.dinner.map((recipe, index) => (
-            <RecipeCard key={index} recipe={recipe} />
-          ))}
-        </div>
-      </section>
-    </div>
-  );
-};
+  const contextValue = {
+    recipes,
+  };
 
-export default HomePage;
+  return (
+    <RecipeContext.Provider value={contextValue}>
+      {children}
+    </RecipeContext.Provider>
+  );
+}

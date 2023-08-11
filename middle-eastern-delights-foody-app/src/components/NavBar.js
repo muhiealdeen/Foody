@@ -7,7 +7,7 @@ const NavBar = () => {
       <input type="text" placeholder="Search recipes..." />
       <ul>
         <li>About the app </li>
-        <li>Contct us</li>
+        <li>Contact us</li>
       </ul>
     </nav>
   );
