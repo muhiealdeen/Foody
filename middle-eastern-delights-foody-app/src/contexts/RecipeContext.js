@@ -49,9 +49,20 @@ export function RecipeProvider({ children }) {
   useEffect(() => {
     fetchRecipes();
   }, []);
+  const searchRecipes = (query) => {
+    const allRecipes = Object.values(recipes).flat();
+    const filteredRecipes = allRecipes.filter((recipe) =>
+      recipe.name.toLowerCase().includes(query.toLowerCase()),
+    );
+    return filteredRecipes;
+  };
+  const [searchResults, setSearchResults] = useState([]);
 
   const contextValue = {
     recipes,
+    searchRecipes,
+    searchResults,
+    setSearchResults,
   };
 
   return (
