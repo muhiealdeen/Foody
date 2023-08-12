@@ -11,12 +11,14 @@ const RecipePage = () => {
   return (
     <div>
       <NavBar />
-      <section>
+      <section lassName="section-cards">
         <h2>All Recipes</h2>
         <div className="recipe-cards">
           {Object.values(recipes).flatMap((recipeArray) =>
-            recipeArray.map((recipe, index) => (
-              <RecipeCard key={index} recipe={recipe} />
+            recipeArray.map((recipe) => (
+              <Link key={recipe.id} to={`/recipe/${recipe.id}`}>
+                <RecipeCard recipe={recipe} />
+              </Link>
             )),
           )}
         </div>

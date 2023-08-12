@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 const RecipeContext = createContext();
 
@@ -24,8 +25,12 @@ export function RecipeProvider({ children }) {
       const data = await response.json();
       console.log(`data`, data);
       return data.hits.map((hit) => ({
+        id: uuidv4(),
         image: hit.recipe.image,
         name: hit.recipe.label,
+        ingredients: hit.recipe.ingredientLines,
+        calories: hit.recipe.calories,
+        moreInfo: hit.recipe.url,
       }));
     };
 

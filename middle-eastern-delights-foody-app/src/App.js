@@ -4,6 +4,7 @@ import { RecipeProvider } from './contexts/RecipeContext';
 import HomePage from './pages/HomePage';
 import MealPage from './pages/MealPage';
 import RecipePage from './pages/RecipePage';
+import RecipeDetailsPage from './pages/RecipeDetailsPage';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/meal/:mealType" element={<MealPage />} />
+          <Route path="/recipe/:recipeId" element={<RecipeDetailsPage />} />
           <Route path="/recipes" element={<RecipePage />} />
         </Routes>
       </Router>
