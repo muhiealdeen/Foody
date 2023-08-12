@@ -10,6 +10,7 @@ const MealPage = () => {
   const { mealType } = useParams();
 
   const selectedRecipes = recipes[mealType] || [];
+  console.log('Selected Recipes:', selectedRecipes);
 
   return (
     <div>
