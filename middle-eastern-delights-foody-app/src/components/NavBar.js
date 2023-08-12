@@ -4,7 +4,7 @@ import '../App.css';
 const NavBar = () => {
   return (
     <nav className="navbar">
-      <div className="logo">Logo</div>
+      <div className="logo">Foody </div>
       <input
         type="text"
         className="search-bar"

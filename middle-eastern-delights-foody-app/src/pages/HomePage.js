@@ -7,6 +7,7 @@ const HomePage = () => {
   return (
     <div>
       <NavBar />
+      <h1>Explore Middle Eastern Delights Via Foody app </h1>
       <Link to="/meal/breakfast" className="meal-link">
         <section>
           <h2>Breakfast</h2>
