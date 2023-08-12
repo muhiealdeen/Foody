@@ -2,7 +2,7 @@ import React from 'react';
 import NavBar from '../components/NavBar';
 import RecipeCard from '../components/RecipeCard';
 import { useRecipeContext } from '../contexts/RecipeContext';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import '../App.css';
 
 const MealPage = () => {
@@ -15,13 +15,18 @@ const MealPage = () => {
   return (
     <div>
       <NavBar />
-      <section>
+      <section className="section-cards">
         <h2>{mealType}</h2>
         <div className="recipe-cards">
           {selectedRecipes.map((recipe, index) => (
-            <RecipeCard key={index} recipe={recipe} />
+            <Link key={recipe.id} to={`/recipe/${recipe.id}`}>
+              <RecipeCard recipe={recipe} />
+            </Link>
           ))}
         </div>
+        <Link to="/">
+          <button>Home page</button>
+        </Link>
       </section>
     </div>
   );
