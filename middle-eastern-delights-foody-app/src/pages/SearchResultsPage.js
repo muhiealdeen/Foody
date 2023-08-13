@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import { useRecipeContext } from '../contexts/RecipeContext';
 import RecipeCard from '../components/RecipeCard';
 import '../App.css';
@@ -19,7 +19,9 @@ const SearchResultsPage = () => {
       ) : (
         <div className="recipe-cards">
           {searchResults.map((recipe) => (
-            <RecipeCard key={recipe.id} recipe={recipe} />
+            <Link key={recipe.id} to={`/recipe/${recipe.id}`}>
+              <RecipeCard recipe={recipe} />
+            </Link>
           ))}
         </div>
       )}

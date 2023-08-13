@@ -20,9 +20,9 @@ const RecipeDetailsPage = () => {
     }
   }
 
-  if (!selectedRecipe) {
-    return <div className="recipe-details">Recipe not found</div>;
-  }
+  // if (!selectedRecipe) {
+  //   return <div className="recipe-details">Recipe not found</div>;
+  // }
   return (
     <div className="recipe-details">
       <NavBar />
