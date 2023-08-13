@@ -8,6 +8,7 @@ import RecipePage from './pages/RecipePage';
 // import ContactPage from './pages/ContactPage';
 import RecipeDetailsPage from './pages/RecipeDetailsPage';
 import SearchResultsPage from './pages/SearchResultsPage';
+import AboutPage from './pages/AboutPage';
 
 function App() {
   return (
@@ -19,8 +20,8 @@ function App() {
           <Route path="/recipe/:recipeId" element={<RecipeDetailsPage />} />
           <Route path="/recipes" element={<RecipePage />} />
           <Route path="/search-results" element={<SearchResultsPage />} />
-          {/* <Route path="/about" element={<AboutPage />} />
-          <Route path="/contact" element={<ContactPage />} /> */}
+          <Route path="/About" element={<AboutPage />} />
+          {/* <Route path="/contact" element={<ContactPage />} /> */}
         </Routes>
       </Router>
     </RecipeProvider>

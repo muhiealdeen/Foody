@@ -7,7 +7,7 @@ import NavBar from '../components/NavBar';
 
 const SearchResultsPage = () => {
   const location = useLocation();
-  const { searchResults } = useRecipeContext(); // Use the hook to access context values
+  const { searchResults } = useRecipeContext();
   const searchQuery = new URLSearchParams(location.search).get('query');
 
   return (

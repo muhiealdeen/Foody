@@ -24,9 +24,6 @@ const MealPage = () => {
             </Link>
           ))}
         </div>
-        <Link to="/">
-          <button>Home page</button>
-        </Link>
       </section>
     </div>
   );

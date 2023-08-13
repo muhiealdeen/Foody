@@ -23,7 +23,6 @@ const RecipePage = () => {
           )}
         </div>
       </section>
-      <Link to="/">Back to Home</Link>
     </div>
   );
 };
