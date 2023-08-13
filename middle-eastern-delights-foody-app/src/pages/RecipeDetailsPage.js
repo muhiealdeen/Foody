@@ -1,7 +1,8 @@
 import React from 'react';
 import NavBar from '../components/NavBar';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useRecipeContext } from '../contexts/RecipeContext';
+import '../App.css';
 
 const RecipeDetailsPage = () => {
   const { recipeId } = useParams();
@@ -20,29 +21,34 @@ const RecipeDetailsPage = () => {
   }
 
   if (!selectedRecipe) {
-    return <div>Recipe not found</div>;
+    return <div className="recipe-details">Recipe not found</div>;
   }
   return (
-    <div>
+    <div className="recipe-details">
       <NavBar />
       {selectedRecipe ? (
-        <div>
-          <h2>{selectedRecipe.name}</h2>
-          <img src={selectedRecipe.image} alt={selectedRecipe.name} />
-          <h3>Ingredients:</h3>
-          <ul>
+        <div className="recipe-details-content">
+          <h2 className="recipe-name">{selectedRecipe.name}</h2>
+          <img
+            className="recipe-image"
+            src={selectedRecipe.image}
+            alt={selectedRecipe.name}
+          />
+          <h3 className="section-title">Ingredients:</h3>
+          <ul className="ingredients-list">
             {selectedRecipe.ingredients.map((ingredient, index) => (
-              <li key={index}>{ingredient}</li>
+              <li key={index} className="ingredient">
+                {ingredient}
+              </li>
             ))}
           </ul>
-          <p>Total Calories: {selectedRecipe.calories}</p>
-          <a href={selectedRecipe.moreInfo}>More Information</a>
-          <Link to="/">
-            <button>Home page</button>
-          </Link>
+          <p className="calories">Total Calories: {selectedRecipe.calories}</p>
+          <a className="more-info" href={selectedRecipe.moreInfo}>
+            More Information
+          </a>
         </div>
       ) : (
-        <p>Recipe not found.</p>
+        <p className="recipe-not-found">Recipe not found.</p>
       )}
     </div>
   );

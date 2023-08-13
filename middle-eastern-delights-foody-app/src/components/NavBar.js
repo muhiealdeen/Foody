@@ -4,7 +4,7 @@ import { useRecipeContext } from '../contexts/RecipeContext';
 import '../App.css';
 
 const NavBar = () => {
-  const { searchRecipes, setSearchResults } = useRecipeContext(); // Use the hook to access context values
+  const { searchRecipes, setSearchResults } = useRecipeContext();
   const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
 
@@ -13,23 +13,26 @@ const NavBar = () => {
     if (trimmedQuery) {
       const filteredRecipes = searchRecipes(trimmedQuery);
       setSearchResults(filteredRecipes);
-      navigate('/search-results', {
-        state: { searchResults: filteredRecipes },
-      });
+      navigate(`/search-results?query=${encodeURIComponent(trimmedQuery)}`);
+      setSearchQuery('');
     }
   };
 
   return (
     <nav className="navbar">
       <div className="logo">Foody</div>
-      <input
-        type="text"
-        className="search-bar"
-        placeholder="Search recipes..."
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-      />
-      <button onClick={handleSearch}>Search</button>
+      <div className="search-container">
+        <input
+          type="text"
+          className="search-bar"
+          placeholder="Search recipes..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+        <button className="search-button" onClick={handleSearch}>
+          Search
+        </button>
+      </div>
       <ul className="nav-links">
         <li>
           <Link to="/">Home</Link>

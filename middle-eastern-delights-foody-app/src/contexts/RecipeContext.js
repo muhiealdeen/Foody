@@ -13,6 +13,8 @@ export function RecipeProvider({ children }) {
     lunch: [],
     dinner: [],
   });
+  const [searchResults, setSearchResults] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
 
   //  I am here fetching recipes and updating state
   const fetchRecipes = async () => {
@@ -56,13 +58,14 @@ export function RecipeProvider({ children }) {
     );
     return filteredRecipes;
   };
-  const [searchResults, setSearchResults] = useState([]);
 
   const contextValue = {
     recipes,
     searchRecipes,
     searchResults,
     setSearchResults,
+    searchQuery,
+    setSearchQuery,
   };
 
   return (
