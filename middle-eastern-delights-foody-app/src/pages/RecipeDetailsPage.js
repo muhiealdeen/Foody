@@ -42,7 +42,9 @@ const RecipeDetailsPage = () => {
               </li>
             ))}
           </ul>
-          <p className="calories">Total Calories: {selectedRecipe.calories}</p>
+          <p className="calories">
+            Total Calories: {selectedRecipe.calories.toFixed(2)}
+          </p>
           <a className="more-info" href={selectedRecipe.moreInfo}>
             More Information
           </a>
