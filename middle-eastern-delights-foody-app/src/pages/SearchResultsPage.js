@@ -10,16 +10,25 @@ const SearchResultsPage = () => {
   const { searchResults } = useRecipeContext();
   const searchQuery = new URLSearchParams(location.search).get('query');
 
-  console.log(searchResults);
+  console.log('TTTTTTTTT', searchResults);
+  // Group recipes by name and select only the first item from each group to get eid of the doublicated results
+  const uniqueSearchResults = Object.values(
+    searchResults.reduce((acc, recipe) => {
+      if (!acc[recipe.name]) {
+        acc[recipe.name] = recipe;
+      }
+      return acc;
+    }, {}),
+  );
   return (
     <div>
       <NavBar />
       <h2>Search Results</h2>
-      {searchResults.length === 0 ? (
+      {uniqueSearchResults.length === 0 ? (
         <p>No recipes found for '{searchQuery}'</p>
       ) : (
         <div className="recipe-cards">
-          {searchResults.map((recipe) => (
+          {uniqueSearchResults.map((recipe) => (
             <Link key={recipe.id} to={`/recipe/${recipe.id}`}>
               <RecipeCard recipe={recipe} />
             </Link>
