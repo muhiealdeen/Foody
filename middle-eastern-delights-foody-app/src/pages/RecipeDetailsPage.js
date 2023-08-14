@@ -68,7 +68,9 @@ const RecipeDetailsPage = () => {
           >
             More Information
           </a>
-          <button onClick={() => navigate(-1)}>Go Back</button>
+          <button className="go-back" onClick={() => navigate(-1)}>
+            Go Back
+          </button>
         </div>
       )}
     </div>
