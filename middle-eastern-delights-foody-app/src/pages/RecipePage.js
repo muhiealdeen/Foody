@@ -11,7 +11,7 @@ const RecipePage = () => {
   return (
     <div>
       <NavBar />
-      <section lassName="section-cards">
+      <section className="section-cards">
         <h2>All Recipes</h2>
         <div className="recipe-cards">
           {Object.values(recipes).flatMap((recipeArray) =>
