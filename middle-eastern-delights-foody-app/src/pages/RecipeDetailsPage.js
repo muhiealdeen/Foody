@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import NavBar from '../components/NavBar';
 import { useParams } from 'react-router-dom';
 import { useRecipeContext } from '../contexts/RecipeContext';
 import '../App.css';
+import defaultPic from '../assets/no-img.jpg';
 
 const RecipeDetailsPage = () => {
   const { recipeId } = useParams();
   const { recipes } = useRecipeContext();
+  const [imageError, setImageError] = useState(false);
 
   // Find the selected recipe by iterating through each meal type
   let selectedRecipe = null;
@@ -20,9 +22,20 @@ const RecipeDetailsPage = () => {
     }
   }
 
-  // if (!selectedRecipe) {
-  //   return <div className="recipe-details">Recipe not found</div>;
-  // }
+  const handleImageError = () => {
+    setImageError(true);
+  };
+
+  let imageUrl = selectedRecipe ? selectedRecipe.image : defaultPic;
+
+  if (imageError) {
+    imageUrl = defaultPic;
+  }
+
+  if (!selectedRecipe) {
+    return <div className="recipe-details">Recipe not found</div>;
+  }
+
   return (
     <div className="recipe-details">
       <NavBar />
@@ -31,8 +44,9 @@ const RecipeDetailsPage = () => {
           <h2 className="recipe-name">{selectedRecipe.name}</h2>
           <img
             className="recipe-image"
-            src={selectedRecipe.image}
+            src={imageUrl}
             alt={selectedRecipe.name}
+            onError={handleImageError}
           />
           <h3 className="section-title">Ingredients:</h3>
           <ul className="ingredients-list">
