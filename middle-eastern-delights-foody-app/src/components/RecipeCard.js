@@ -4,12 +4,8 @@ import '../App.css';
 import defaultPic from '../assets/no-img.jpg';
 
 const RecipeCard = ({ recipe }) => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [imageError, setImageError] = useState(false);
-
-  const handleCardClick = () => {
-    navigate(`/recipe/${recipe.id}`);
-  };
 
   const handleImageError = () => {
     setImageError(true);
@@ -22,7 +18,7 @@ const RecipeCard = ({ recipe }) => {
   }
 
   return (
-    <div className="recipe-card" onClick={handleCardClick}>
+    <div className="recipe-card">
       <div>
         <img src={imageUrl} alt={recipe.name} onError={handleImageError} />
       </div>
