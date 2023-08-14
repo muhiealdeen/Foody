@@ -11,7 +11,7 @@ const SearchResultsPage = () => {
   const searchQuery = new URLSearchParams(location.search).get('query');
 
   console.log('TTTTTTTTT', searchResults);
-  // Group recipes by name and select only the first item from each group to get eid of the doublicated results
+  // Group recipes by name and select only the first item from each group to get rid of the duplicated results
   const uniqueSearchResults = Object.values(
     searchResults.reduce((acc, recipe) => {
       if (!acc[recipe.name]) {
