@@ -1,26 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../App.css';
+import defaultPic from '../assets/no-img.jpg';
 
 const RecipeCard = ({ recipe }) => {
   const navigate = useNavigate();
-
-  console.log('>>>>>>>>> ', recipe.image);
+  const [imageError, setImageError] = useState(false);
 
   const handleCardClick = () => {
     navigate(`/recipe/${recipe.id}`);
   };
+
+  const handleImageError = () => {
+    setImageError(true);
+  };
+
+  let imageUrl = recipe.image || defaultPic;
+
+  if (imageError) {
+    imageUrl = defaultPic;
+  }
+
   return (
     <div className="recipe-card" onClick={handleCardClick}>
       <div>
-        <img
-          src={
-            recipe.image !== ''
-              ? recipe.image
-              : '../assets/pngtree-vector-illustration-knife-and-fork-western-food-plate-image_2283844.jpg'
-          }
-          alt={recipe.name}
-        />
+        <img src={imageUrl} alt={recipe.name} onError={handleImageError} />
       </div>
       <p>{recipe.name}</p>
     </div>
