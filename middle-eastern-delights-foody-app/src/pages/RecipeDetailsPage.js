@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import NavBar from '../components/NavBar';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useRecipeContext } from '../contexts/RecipeContext';
 import '../App.css';
 import defaultPic from '../assets/no-img.jpg';
@@ -9,6 +9,7 @@ const RecipeDetailsPage = () => {
   const { recipeId } = useParams();
   const { recipes } = useRecipeContext();
   const [imageError, setImageError] = useState(false);
+  const navigate = useNavigate();
 
   // Find the selected recipe by iterating through each meal type
   let selectedRecipe = null;
@@ -35,11 +36,11 @@ const RecipeDetailsPage = () => {
   if (!selectedRecipe) {
     return <div className="recipe-details">Recipe not found</div>;
   }
-
+  console.log(`??????????????????`, selectedRecipe.moreInfo);
   return (
     <div className="recipe-details">
       <NavBar />
-      {selectedRecipe ? (
+      {selectedRecipe && (
         <div className="recipe-details-content">
           <h2 className="recipe-name">{selectedRecipe.name}</h2>
           <img
@@ -59,12 +60,16 @@ const RecipeDetailsPage = () => {
           <p className="calories">
             Total Calories: {selectedRecipe.calories.toFixed(2)}
           </p>
-          <a className="more-info" href={selectedRecipe.moreInfo}>
+          <a
+            className="more-info"
+            href={selectedRecipe.moreInfo}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             More Information
           </a>
+          <button onClick={() => navigate(-1)}>Go Back</button>
         </div>
-      ) : (
-        <p className="recipe-not-found">Recipe not found.</p>
       )}
     </div>
   );

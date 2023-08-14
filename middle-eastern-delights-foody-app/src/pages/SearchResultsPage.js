@@ -10,6 +10,7 @@ const SearchResultsPage = () => {
   const { searchResults } = useRecipeContext();
   const searchQuery = new URLSearchParams(location.search).get('query');
 
+  console.log(searchResults);
   return (
     <div>
       <NavBar />

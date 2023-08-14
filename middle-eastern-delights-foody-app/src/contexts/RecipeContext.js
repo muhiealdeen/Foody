@@ -22,7 +22,7 @@ export function RecipeProvider({ children }) {
 
     const fetchRecipeData = async (mealType) => {
       const response = await fetch(
-        `https://api.edamam.com/api/recipes/v2?type=public&app_id=b262eed2&app_key=23f36ce87111305ce2f68806a91441f4&diet=balanced&cuisineType=Middle%20Eastern&mealType=${mealType}&imageSize=REGULAR`,
+        `https://api.edamam.com/api/recipes/v2?type=public&app_id=${process.env.REACT_APP_id}&app_key=${process.env.REACT_APP_key}&diet=balanced&cuisineType=Middle%20Eastern&mealType=${mealType}&imageSize=REGULAR`,
       );
       const data = await response.json();
       console.log(`data`, data);
