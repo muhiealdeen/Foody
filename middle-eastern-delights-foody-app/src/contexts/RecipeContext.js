@@ -67,7 +67,7 @@ export function RecipeProvider({ children }) {
     searchQuery,
     setSearchQuery,
   };
-
+  console.log('SSSSSSSSSSS', searchResults);
   return (
     <RecipeContext.Provider value={contextValue}>
       {children}
