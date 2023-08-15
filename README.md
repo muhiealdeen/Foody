@@ -28,12 +28,12 @@ Foody is a user-friendly app that provides a comprehensive collection of Middle 
 
 ### In the landing page (Home Page)
 
-There are 3 main sections ( Breakfast, Lunch, Dinner) each section contains an img of the most famous recipes and information about the tradition of each daily meal.If you click on one of the daily meals sections you will get many recipes cards related to the selected section. In additon, You can use the search bar to search for recipes.
+There are 3 main sections ( Breakfast, Lunch, Dinner) each section contains an img of the most famous recipes and information about the tradition of each daily meal. If you click on one of the daily meals sections you will get many recipes cards related to the selected section. In additon, you can use the search bar to search for recipes.
 
 ### Recipes Details Page
 
-Whenever a user selects a recipe from the lists of recipes, this page will display additional details about the selected recipe (ingredints, calories) .
+Whenever a user selects a recipe from the lists of recipes, this page will display additional details about the selected recipe such as (ingredints, calories count).
 
-The App can be checked via this link: <https://64db976315985c75cd7bbc6e--delicate-alfajores-1d9d23.netlify.app/>
+The App can be checked via this link: (<https://64dbb5d470fc310d0de01f86--delicate-alfajores-1d9d23.netlify.app/>)
 
 Finally, I used edamam API to get the required data for this App: <https://api.edamam.com/>

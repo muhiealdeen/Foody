@@ -23,6 +23,7 @@ const NavBar = () => {
       handleSearch();
     }
   };
+
   return (
     <nav className="navbar">
       <div className="logo">Foody</div>
