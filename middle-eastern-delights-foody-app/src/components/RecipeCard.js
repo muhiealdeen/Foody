@@ -3,7 +3,6 @@ import '../App.css';
 import defaultPic from '../assets/no-img.jpg';
 
 const RecipeCard = ({ recipe }) => {
-  // const navigate = useNavigate();
   const [imageError, setImageError] = useState(false);
 
   const handleImageError = () => {
