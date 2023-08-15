@@ -7,6 +7,28 @@ export function useRecipeContext() {
   return useContext(RecipeContext);
 }
 
+// Fetch recipe data function
+export async function fetchRecipeData(mealType = null, searchQuery = null) {
+  let apiUrl;
+
+  if (mealType) {
+    apiUrl = `https://api.edamam.com/api/recipes/v2?type=public&app_id=${process.env.REACT_APP_ID}&app_key=${process.env.REACT_APP_API_KEY}&diet=balanced&cuisineType=Middle%20Eastern&mealType=${mealType}&imageSize=REGULAR`;
+  }
+  if (searchQuery) {
+    apiUrl = `https://api.edamam.com/search?q=${searchQuery}&app_id=${process.env.REACT_APP_ID}&app_key=${process.env.REACT_APP_API_KEY}&diet=balanced&cuisineType=Middle%20Eastern&imageSize=REGULAR`;
+  }
+  const response = await fetch(apiUrl);
+  const data = await response.json();
+  return await data.hits.map((hit) => ({
+    id: uuidv4(),
+    image: hit.recipe.image,
+    name: hit.recipe.label,
+    ingredients: hit.recipe.ingredientLines,
+    calories: hit.recipe.calories,
+    moreInfo: hit.recipe.url,
+  }));
+}
+
 export function RecipeProvider({ children }) {
   const [recipes, setRecipes] = useState({
     breakfast: [],
@@ -15,47 +37,25 @@ export function RecipeProvider({ children }) {
   });
   const [searchResults, setSearchResults] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
-
-  //  I am here fetching recipes and updating state
   const fetchRecipes = async () => {
     const mealTypes = ['Breakfast', 'Lunch', 'Dinner'];
-
-    const fetchRecipeData = async (mealType) => {
-      const response = await fetch(
-        `https://api.edamam.com/api/recipes/v2?type=public&app_id=${process.env.REACT_APP_ID}&app_key=${process.env.REACT_APP_API_KEY}&diet=balanced&cuisineType=Middle%20Eastern&mealType=${mealType}&imageSize=REGULAR`,
-      );
-      const data = await response.json();
-      console.log(`data`, data);
-      return data.hits.map((hit) => ({
-        id: uuidv4(),
-        image: hit.recipe.image,
-        name: hit.recipe.label,
-        ingredients: hit.recipe.ingredientLines,
-        calories: hit.recipe.calories,
-        moreInfo: hit.recipe.url,
-      }));
-    };
-
     const recipesByMealType = await Promise.all(
       mealTypes.map((mealType) => fetchRecipeData(mealType)),
     );
-
     setRecipes({
       breakfast: recipesByMealType[0],
       lunch: recipesByMealType[1],
       dinner: recipesByMealType[2],
     });
-    console.log('Recipes:', recipes);
   };
 
   useEffect(() => {
     fetchRecipes();
   }, []);
-  const searchRecipes = (query) => {
-    const allRecipes = Object.values(recipes).flat();
-    const filteredRecipes = allRecipes.filter((recipe) =>
-      recipe.name.toLowerCase().includes(query.toLowerCase()),
-    );
+
+  const searchRecipes = async (query) => {
+    const filteredRecipes = await fetchRecipeData(null, query);
+
     return filteredRecipes;
   };
 
