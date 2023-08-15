@@ -36,7 +36,7 @@ const RecipeDetailsPage = () => {
   if (!selectedRecipe) {
     return <div className="recipe-details">Recipe not found</div>;
   }
-  console.log(`??????????????????`, selectedRecipe.moreInfo);
+
   return (
     <div className="recipe-details">
       <NavBar />

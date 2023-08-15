@@ -18,6 +18,11 @@ const NavBar = () => {
     }
   };
 
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      handleSearch();
+    }
+  };
   return (
     <nav className="navbar">
       <div className="logo">Foody</div>
@@ -28,6 +33,7 @@ const NavBar = () => {
           placeholder="Search recipes..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
+          onKeyPress={handleKeyPress}
         />
         <button className="search-button" onClick={handleSearch}>
           Search

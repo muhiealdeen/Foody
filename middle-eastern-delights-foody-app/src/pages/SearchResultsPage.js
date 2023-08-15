@@ -10,7 +10,6 @@ const SearchResultsPage = () => {
   const { searchResults } = useRecipeContext();
   const searchQuery = new URLSearchParams(location.search).get('query');
 
-  console.log('TTTTTTTTT', searchResults);
   // Group recipes by name and select only the first item from each group to get rid of the duplicated results
   const uniqueSearchResults = Object.values(
     searchResults.reduce((acc, recipe) => {

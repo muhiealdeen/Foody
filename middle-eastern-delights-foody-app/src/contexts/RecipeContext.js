@@ -3,8 +3,6 @@ import { v4 as uuidv4 } from 'uuid';
 
 const RecipeContext = createContext();
 
-console.log('lllllllllllllllllllll: ', process.env.REACT_APP_API_KEY);
-
 export function useRecipeContext() {
   return useContext(RecipeContext);
 }
@@ -69,7 +67,7 @@ export function RecipeProvider({ children }) {
     searchQuery,
     setSearchQuery,
   };
-  console.log('SSSSSSSSSSS', searchResults);
+
   return (
     <RecipeContext.Provider value={contextValue}>
       {children}
