@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import NavBar from '../components/NavBar';
 import { Link } from 'react-router-dom';
 import '../App.css';
+import { useRecipeContext } from '../contexts/RecipeContext';
 
 const HomePage = () => {
+  const { setSearchResults } = useRecipeContext();
+
+  useEffect(() => {
+    setSearchResults([]);
+  }, []);
+
   return (
     <>
       <NavBar />

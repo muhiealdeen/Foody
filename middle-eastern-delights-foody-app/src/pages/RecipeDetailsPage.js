@@ -7,19 +7,25 @@ import defaultPic from '../assets/no-img.jpg';
 
 const RecipeDetailsPage = () => {
   const { recipeId } = useParams();
-  const { recipes } = useRecipeContext();
+  const { recipes, searchResults } = useRecipeContext();
   const [imageError, setImageError] = useState(false);
   const navigate = useNavigate();
 
   // Find the selected recipe by iterating through each meal type
   let selectedRecipe = null;
 
-  for (const mealType in recipes) {
-    const recipeArray = recipes[mealType];
+  if (searchResults.length > 0) {
+    const recipeArray = searchResults;
     selectedRecipe = recipeArray.find((recipe) => recipe.id === recipeId);
+  } else {
+    for (const mealType in recipes) {
+      const recipeArray = recipes[mealType];
 
-    if (selectedRecipe) {
-      break;
+      selectedRecipe = recipeArray.find((recipe) => recipe.id === recipeId);
+
+      if (selectedRecipe) {
+        break;
+      }
     }
   }
 

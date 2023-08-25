@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useCallback,
+} from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 const RecipeContext = createContext();
@@ -15,7 +21,7 @@ export async function fetchRecipeData(mealType = null, searchQuery = null) {
     apiUrl = `https://api.edamam.com/api/recipes/v2?type=public&app_id=${process.env.REACT_APP_ID}&app_key=${process.env.REACT_APP_API_KEY}&diet=balanced&cuisineType=Middle%20Eastern&mealType=${mealType}&imageSize=REGULAR`;
   }
   if (searchQuery) {
-    apiUrl = `https://api.edamam.com/search?q=${searchQuery}&app_id=${process.env.REACT_APP_ID}&app_key=${process.env.REACT_APP_API_KEY}&diet=balanced&cuisineType=Middle%20Eastern&imageSize=REGULAR`;
+    apiUrl = `https://api.edamam.com/api/recipes/v2?type=public&q=${searchQuery}&app_id=${process.env.REACT_APP_ID}&app_key=${process.env.REACT_APP_API_KEY}&diet=balanced&cuisineType=Middle%20Eastern&imageSize=REGULAR`;
   }
   const response = await fetch(apiUrl);
   const data = await response.json();
@@ -35,8 +41,8 @@ export function RecipeProvider({ children }) {
     lunch: [],
     dinner: [],
   });
+
   const [searchResults, setSearchResults] = useState([]);
-  const [searchQuery, setSearchQuery] = useState('');
   const fetchRecipes = async () => {
     const mealTypes = ['Breakfast', 'Lunch', 'Dinner'];
     const recipesByMealType = await Promise.all(
@@ -53,19 +59,17 @@ export function RecipeProvider({ children }) {
     fetchRecipes();
   }, []);
 
-  const searchRecipes = async (query) => {
-    const filteredRecipes = await fetchRecipeData(null, query);
+  const searchRecipes = useCallback(async (searchQuery) => {
+    const filteredRecipes = await fetchRecipeData(null, searchQuery);
 
     return filteredRecipes;
-  };
+  }, []);
 
   const contextValue = {
     recipes,
     searchRecipes,
     searchResults,
     setSearchResults,
-    searchQuery,
-    setSearchQuery,
   };
 
   return (

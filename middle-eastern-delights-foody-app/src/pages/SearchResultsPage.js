@@ -8,8 +8,7 @@ import '../App.css';
 const SearchResultsPage = () => {
   const location = useLocation();
   const searchQuery = new URLSearchParams(location.search).get('query');
-  const { searchRecipes } = useRecipeContext();
-  const [searchResults, setSearchResults] = useState([]);
+  const { searchRecipes, searchResults, setSearchResults } = useRecipeContext();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -24,7 +23,7 @@ const SearchResultsPage = () => {
       }
     };
     getSearchResults();
-  }, [searchQuery, searchRecipes]);
+  }, []);
 
   let content;
   if (isLoading) {

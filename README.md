@@ -34,6 +34,6 @@ There are 3 main sections ( Breakfast, Lunch, Dinner) each section contains an i
 
 Whenever a user selects a recipe from the lists of recipes, this page will display additional details about the selected recipe such as (ingredints, calories count).
 
-The App can be checked via this link: (<https://64dbb5d470fc310d0de01f86--delicate-alfajores-1d9d23.netlify.app/>)
+The App can be checked via this link: (<https://64e91c4c04ddee47b7bdced3--delicate-alfajores-1d9d23.netlify.app/>)
 
 Finally, I used edamam API to get the required data for this App: <https://api.edamam.com/>

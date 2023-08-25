@@ -1,18 +1,14 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useRecipeContext } from '../contexts/RecipeContext';
 import '../App.css';
 
 const NavBar = () => {
-  const { searchRecipes, setSearchResults } = useRecipeContext();
   const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
 
   const handleSearch = async () => {
     const trimmedQuery = searchQuery.trim();
     if (trimmedQuery) {
-      const filteredRecipes = searchRecipes(trimmedQuery);
-      setSearchResults(filteredRecipes);
       navigate(`/search-results?query=${encodeURIComponent(trimmedQuery)}`);
       setSearchQuery('');
     }
